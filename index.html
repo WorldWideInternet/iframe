@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Example</title>
+</head>
+<body>
+
+    <h1>Enter URL to iframe:</h1>
+    
+    <form id="urlForm">
+        <label for="url">URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="button" onclick="embedIframe()">Embed</button>
+    </form>
+
+    <div id="iframeContainer"></div>
+
+    <script>
+        function embedIframe() {
+            var url = document.getElementById("url").value;
+            var iframeContainer = document.getElementById("iframeContainer");
+
+            // Creating an iframe element
+            var iframe = document.createElement("iframe");
+            iframe.src = url;
+            iframe.width = "100%";
+            iframe.height = "500px";
+
+            // Clear previous iframe
+            iframeContainer.innerHTML = '';
+
+            // Append the new iframe
+            iframeContainer.appendChild(iframe);
+        }
+    </script>
+
+</body>
+</html>
