@@ -3,39 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe Example</title>
+    <title>Dynamic Iframe</title>
+    <style>
+        .c-button {
+            min-width: 100%;
+            font-family: "Gill Sans", sans-serif;
+            font-weight: bolder;
+            appearance: auto;
+            border: 0;
+            border-color: #fff;
+            border-radius: 5px;
+            background-size: 50px 50px;
+            background-color: #ac0;
+            background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+            background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+            background-image: -ms-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+            background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+            color: #000;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .c-button:hover {
+            background: #ac0;
+        }
+
+        .c-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px #cbd6ee;
+        }
+
+        .c-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Enter URL to iframe:</h1>
+    <h2>Enter Website URL:</h2>
     
     <form id="urlForm">
-        <label for="url">URL:</label>
-        <input type="text" id="url" name="url" required>
-        <button type="button" onclick="embedIframe()">Embed</button>
+        <label for="websiteUrl">URL:</label>
+        <input type="text" id="websiteUrl" name="websiteUrl" required>
+        <button type="button" class="c-button" onclick="loadIframe()">Load Iframe</button>
     </form>
+
+    <h2>Website Preview:</h2>
 
     <div id="iframeContainer"></div>
 
     <script>
-        function embedIframe() {
-            var url = document.getElementById("url").value;
-            var iframeContainer = document.getElementById("iframeContainer");
+        function loadIframe() {
+            var url = document.getElementById("websiteUrl").value;
 
-            // Creating an iframe element
+            // Create a new iframe element
             var iframe = document.createElement("iframe");
+            
+            // Set the source of the iframe
             iframe.src = url;
-            iframe.width = "100%";
-            iframe.height = "500px";
 
-            // Clear previous iframe
-            iframeContainer.innerHTML = '';
+            // Set attributes for the iframe
+            iframe.width = "800";
+            iframe.height = "600";
+            iframe.frameborder = "0";
 
-            // Append the new iframe
-            iframeContainer.appendChild(iframe);
+            // Append the iframe to the container
+            document.getElementById("iframeContainer").innerHTML = "";
+            document.getElementById("iframeContainer").appendChild(iframe);
         }
     </script>
-    <a href="ha">see links</a>
 
 </body>
 </html>
